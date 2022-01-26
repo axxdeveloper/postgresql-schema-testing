@@ -51,7 +51,7 @@ class Version3DaoTest extends IntegrationTest {
 
     private void printQueryPlan(String sql, byte[] version) {
         try (Connection conn = DriverManager.getConnection(postgreSQLContainer.getJdbcUrl(), postgreSQLContainer.getUsername(), postgreSQLContainer.getPassword());
-             PreparedStatement stmt = conn.prepareCall("EXPLAIN " + sql);
+             PreparedStatement stmt = conn.prepareCall("EXPLAIN ANALYZE " + sql);
         ) {
             // Extract data from result set
             stmt.setBytes(1, version);

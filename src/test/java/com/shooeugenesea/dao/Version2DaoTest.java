@@ -70,7 +70,7 @@ class Version2DaoTest extends IntegrationTest {
 	private void printQueryPlan(String sql) {
 		try(Connection conn = DriverManager.getConnection(postgreSQLContainer.getJdbcUrl(), postgreSQLContainer.getUsername(), postgreSQLContainer.getPassword());
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("EXPLAIN " + sql);) {
+			ResultSet rs = stmt.executeQuery("EXPLAIN ANALYZE " + sql);) {
 		   // Extract data from result set
 		   while (rs.next()) {
 			   System.out.println("QUERY PLAN: " + rs.getString("QUERY PLAN"));
